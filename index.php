@@ -83,7 +83,7 @@
 
     </div>
     
-    <script src="/Scripts/jquery-1.10.2.js"></script>
+    <script src="/Scripts/jquery-1.12.4.js"></script>
     <script src="/Scripts/WebCam.js"></script>
 </body>
 </html>
