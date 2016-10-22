@@ -29,7 +29,7 @@
         <button class="button btn btn-default action" type="button" id="start" style="display:none">Ready ?</button>
         <div class="demo-area" id="democontent" style="display:none">
             <h3 class="subtitle view-text view-text--video">
-                <span>Webcam view</span> <button type="button" style="background-image:url('../../img/camera.png');background-size:contain;min-height:30px;min-width:30px; border:none" id="switch"></button>
+                <span>Webcam view</span> <button type="button" style="background-image:url('/img/camera.png');background-size:contain;min-height:30px;min-width:30px; border:none" id="switch"></button>
                 <span id="videoViewText" class="view-text__instructions"></span>
             </h3>
             <div class="view--video">
