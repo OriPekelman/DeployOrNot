@@ -6,11 +6,6 @@
     <title>DeployOrNot?</title>
     <link href="/Content/css.css" rel="stylesheet">
     <link href="/Content/WebCam.css" rel="stylesheet">
-    <script src="/Scripts/modernizr-2.6.2.js"></script>
-    <script src="/Scripts/jquery-1.10.2.js"></script>
-    <script src="/Scripts/jquery-ui-1.9.0.js"></script>
-    <script src="/Scripts/bootstrap.js"></script>
-    <script src="/Scripts/respond.js"></script>   
 </head>
 <body>
     <div class="container" style="text-align: center; max-width: 800px;">
@@ -87,7 +82,8 @@
         <input name="source" id="source" type="hidden">
 
     </div>
-
+    
+    <script src="/Scripts/jquery-1.10.2.js"></script>
     <script src="/Scripts/WebCam.js"></script>
 </body>
 </html>
