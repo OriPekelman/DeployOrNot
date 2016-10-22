@@ -1,0 +1,10 @@
+{
+    "name": "DeployOrNot",
+    "description": "Forum PHP 2016",
+    "config":{
+        "secure-http": false
+    },
+    "require": {
+        "pear/http_request2": "^2.3"
+    }
+}

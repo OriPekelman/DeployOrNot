@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HappyOrNot?</title>
+    <title>DeployOrNot?</title>
     <link href="/Content/css.css" rel="stylesheet">
     <link href="/Content/WebCam.css" rel="stylesheet">
     <script src="/Scripts/modernizr-2.6.2.js"></script>
