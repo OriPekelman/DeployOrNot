@@ -30,3 +30,5 @@ web:
 dependencies:
   php:
     platformsh/cli: "3.6.0"
+mounts:
+  .platformsh/cache: 'shared:cache/cache'
