@@ -27,3 +27,6 @@ web:
       index:
         - index.html
       allow: true
+dependencies:
+  php:
+    platformsh/cli: "3.6.0"
