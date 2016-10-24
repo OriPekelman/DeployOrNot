@@ -16,5 +16,5 @@ while (ob_get_level() > 0) {
     // If the current level has not changed, abort
     if (ob_get_level() == $level) break;
   }
-$command = "for i in {1..10}; do platform environment:info -p qa4xawahw66fk -e with_cli;sleep 1; done;";
+$command = "for i in {1..10}; do platform project:list; platform environment:info -p qa4xawahw66fk -e with_cli;sleep 1; done;";
 system($command);
