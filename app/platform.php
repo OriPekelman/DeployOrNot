@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__."/../vendor/autoload.php";
+use Symfony\Component\Process\Process;
 // Turn off output buffering
 ini_set('output_buffering', 'off');
 // Turn off PHP output compression
@@ -22,15 +24,39 @@ while (ob_get_level() > 0) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeployOrNot?</title>
-    <link href="/styles/css.css" rel="stylesheet">
+    <style>
+    .console { 
+      font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace; 
+      background-color: #222;
+      color: green;
+      padding:80px;
+      height: auto;
+      overflow: auto;
+    }
+    pre.console {  font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace; 
+      background-color: #222;
+      color: green;
+      padding:80px;
+      height: auto;
+      overflow: auto;
+      border:none;}
+    </style>
 </head>
-<body class="console">
-<pre>
+<body>
+<pre class="console">
 <?php
   if ($project_id = getenv('PLATFORM_DEPLOY_PROJECT')){ 
     $environment_to_merge = $_GET["environment"];
-    $command = "platform environment:merge -y -p ". $project_id . " ".escapeshellarg($environment_to_merge) . " 2>&1";
-    system($command);
+    $command = "platform environment:merge -y -p ". $project_id . " ".escapeshellarg($environment_to_merge) ;
+    $process = new Process($command);
+    $process->run(function ($type, $buffer) {
+        if (Process::ERR === $type) {
+            echo '<span class="error">'.$buffer.'</span>';
+        } else {
+            echo  $buffer;
+        }
+    });
+    
   } else
   {
     echo "Vous devez configurer un projet à déployer";
