@@ -1,3 +1,4 @@
 # composer related
 composer.phar
 vendor
+.DS_Store

@@ -53,63 +53,71 @@
         if (photoReady) {
             var url = 'api.php';
             var canvas = document.getElementById('canvasTag');
-            var imgData = canvas.msToBlob('image/jpeg');
-            var imgUrl = canvas.toDataURL();
+            
+            if (canvas.toBlob) {
+                canvas.toBlob(
+                    function (blob) {
+                        // Do something with the blob object,
+                        // e.g. creating a multipart form for file uploads:
+                        /* ... */
+                        var imgData = blob;
+                        var imgUrl = canvas.toDataURL();
 
-            //Display analyzed data
-            result.innerText = "Analyzing";
-            loading.style.display = "inline-block";
-            $('#photo1').attr('src', imgUrl);
+                        //Display analyzed data
+                        result.innerText = "Analyzing";
+                        loading.style.display = "inline-block";
+                        $('#photo1').attr('src', imgUrl);
 
-            //Hide Webcam stuff
-            document.getElementById('democontent').style.display = 'none';
-            document.getElementById('switch').style.display = 'none';
-            var video = document.getElementById('videoTag');
-            if (typeof (video.srcObject) !== 'undefined') video.srcObject = null;
-            video.src = null;
-            if (mediaStream) {
-                var videoTracks = mediaStream.getVideoTracks();
-                videoTracks[0].stop();
-                mediaStream = null;
+                        //Hide Webcam stuff
+                        document.getElementById('democontent').style.display = 'none';
+                        document.getElementById('switch').style.display = 'none';
+                        var video = document.getElementById('videoTag');
+                        if (typeof (video.srcObject) !== 'undefined') video.srcObject = null;
+                        video.src = null;
+                        if (mediaStream) {
+                            var videoTracks = mediaStream.getVideoTracks();
+                            videoTracks[0].stop();
+                            mediaStream = null;
+                        }
+                        var data = new FormData();
+                        data.append('file', imgData);
+
+                        $.ajax({
+                            type: 'POST',
+                            url: url,
+                            data: data,
+                            processData: false,
+                            contentType: false
+                        })
+                        .done(function (response) {
+
+                            loading.style.display = "none";
+
+                            if (response.error != "") {
+                                result.innerText = response.error;
+                            }
+                            else {
+                                result.innerHTML = response.result;
+
+                                //TODO: display the computed result instead
+                                //$('#photo2').attr('src', 'Photos/' + response.result);
+                            }
+
+                        })
+                        .fail(function (response) {
+                            console.log("Ajax Call Failed:");
+                            console.log(response);
+                        })
+                        .complete(function (response) {
+                            restartButton.style.display = 'inline-block';
+                        });
+                        canvas.removeEventListener('click', uploadPhoto);
+                        document.getElementById('photoViewText').innerHTML = '';
+                        photoReady = false;
+                    },
+                    'image/jpeg'
+                );
             }
-
-            //http://stackoverflow.com/questions/19015555/pass-blob-through-ajax-to-generate-a-file
-
-            var data = new FormData();
-            data.append('file', imgData);
-
-            $.ajax({
-                type: 'POST',
-                url: url,
-                data: data,
-                processData: false,
-                contentType: false
-            })
-            .done(function (response) {
-
-                loading.style.display = "none";
-
-                if (response.error != "") {
-                    result.innerText = response.error;
-                }
-                else {
-                    result.innerHTML = response.result;
-
-                    //TODO: display the computed result instead
-                    //$('#photo2').attr('src', 'Photos/' + response.result);
-                }
-
-            })
-            .fail(function (response) {
-                alert('Error : ' + response.error);
-            })
-            .complete(function (response) {
-                restartButton.style.display = 'inline-block';
-            });
-                
-            canvas.removeEventListener('click', uploadPhoto);
-            document.getElementById('photoViewText').innerHTML = '';
-            photoReady = false;
         }
     };
 

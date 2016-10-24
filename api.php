@@ -41,13 +41,6 @@
     'ssl_verify_peer'   => FALSE,
     'ssl_verify_host'   => FALSE
   ));
-  // ########################################
-
-  // Request body
-  // (switch Content-Type to application/json if using URLs)
-  // $request->setBody('{"url":"http://www.bien-etre-au-naturel.fr/wp-content/uploads/2013/07/sourire.jpg"}');
-  // $request->setBody('{"url":"https://pbs.twimg.com/profile_images/719103789379284992/ufCN7Ooi.jpg"}');
-  
   $content = file_get_contents($filename);
 
   $request->setBody($content);

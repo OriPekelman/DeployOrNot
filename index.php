@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeployOrNot?</title>
-    <link href="/Content/css.css" rel="stylesheet">
-    <link href="/Content/WebCam.css" rel="stylesheet">
+    <link href="/styles/css.css" rel="stylesheet">
+    <link href="/styles/webcam.css" rel="stylesheet">
 </head>
 <body>
     <div class="container" style="text-align: center; max-width: 800px;">
@@ -19,7 +19,7 @@
                         Forum PHP <span id="demoSpan">2016</span>
                     </div>
                     <div class="subheader">
-                        <img id="headerimage" src="/img/Icon.png">
+                        <img id="headerimage" src="/img/icon.png">
                     </div>
                 </div>
             </div>
@@ -82,8 +82,8 @@
         <input name="source" id="source" type="hidden">
 
     </div>
-    
-    <script src="/Scripts/jquery-1.12.4.js"></script>
-    <script src="/Scripts/WebCam.js"></script>
+    <script src="/javascript/canvas-to-blob.min.js"></script>
+    <script src="/javascript/jquery-1.12.4.js"></script>
+    <script src="/javascript/webcam.js"></script>
 </body>
 </html>
