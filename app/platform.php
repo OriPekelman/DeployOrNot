@@ -1,5 +1,4 @@
 <?php
-header("Content-type: text/plain");
 // Turn off output buffering
 ini_set('output_buffering', 'off');
 // Turn off PHP output compression
@@ -16,5 +15,26 @@ while (ob_get_level() > 0) {
     // If the current level has not changed, abort
     if (ob_get_level() == $level) break;
   }
-$command = "for i in {1..10}; do platform project:list; platform environment:info -p qa4xawahw66fk -e with_cli;sleep 1; done;";
-system($command);
+?>
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeployOrNot?</title>
+    <link href="/styles/css.css" rel="stylesheet">
+</head>
+<body class="console">
+<pre>
+<?php
+  if ($project_id = getenv('PLATFORM_DEPLOY_PROJECT')){ 
+    $environment_to_merge = $_GET["environment"];
+    $command = "platform environment:merge -y -p ". $project_id . " ".escapeshellarg($environment_to_merge) . " 2>&1";
+    system($command);
+  } else
+  {
+    echo "Vous devez configurer un projet à déployer";
+  }
+?>
+</pre>
+</body>

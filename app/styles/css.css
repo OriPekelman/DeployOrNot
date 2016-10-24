@@ -260,3 +260,12 @@ body {
         max-width:100px;
     }
 }
+#console {display:none;  height: auto; overflow: auto}
+.console { 
+  font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace; 
+  background-color: #222;
+  color: green;
+  padding:80px;
+  height: auto;
+  overflow: auto;
+}
