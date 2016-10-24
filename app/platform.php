@@ -1,5 +1,5 @@
 <?php
-
+header("Content-type: text/plain");
 // Turn off output buffering
 ini_set('output_buffering', 'off');
 // Turn off PHP output compression
@@ -16,4 +16,5 @@ while (ob_get_level() > 0) {
     // If the current level has not changed, abort
     if (ob_get_level() == $level) break;
 
-echo `"for i in {1..10}; do platform environment:info -p qa4xawahw66fk -e with_cli;sleep 1; done;"`;
+$command = "for i in {1..10}; do platform environment:info -p qa4xawahw66fk -e with_cli;sleep 1; done;"
+system($command);
