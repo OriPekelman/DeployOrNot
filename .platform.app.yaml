@@ -1,0 +1,29 @@
+# .platform.app.yaml
+
+# The name param is linked to the "upstream" parameter in
+# routes.yaml. If you called the app "foo", then the
+# upstream parameter would look like `upstream: "foo:http"`
+name: app
+# The "type" parameter takes the form "language:version".
+# This could be `python:3.5` for example
+type: php:7.0
+# Look for a composer.lock (or composer.json) and download
+# the listed dependencies
+build:
+  flavor: composer
+# How much disk space will this app need?  This is primarily used for
+# user uploaded assets, so for this application you don't really need
+# anything here, 256 would be fine.  You can always grow
+# this later, so this is a safe starting point. (in MB)
+disk: 2048
+# Now that a request has gotten this far, how do you want
+# it handled?  We'll go into more detail about these params
+# in a later post.  This section can be thought of as
+# somewhat analogous to an Apache or Nginx config file.
+web:
+  locations:
+    "/":
+      root: "app"
+      index:
+        - index.html
+      allow: true
