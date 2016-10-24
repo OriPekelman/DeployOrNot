@@ -51,7 +51,6 @@
 
     var uploadPhoto = function () {
         if (photoReady) {
-            var url = 'api.php';
             var canvas = document.getElementById('canvasTag');
             
             if (canvas.toBlob) {
@@ -84,7 +83,7 @@
 
                         $.ajax({
                             type: 'POST',
-                            url: url,
+                            url: "api.php",
                             data: data,
                             processData: false,
                             contentType: false

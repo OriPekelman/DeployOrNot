@@ -4,4 +4,7 @@
 ```composer install```
 
 ## Configure
-export `EMOTION_API_KEY` environemnt variable with a key to the emotion API
+
+```platform variable:set env:EMOTION_API_KEY de344...5e58ee85```
+
+set environemnt variable with a key to the emotion API

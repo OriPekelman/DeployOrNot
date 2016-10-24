@@ -1,5 +1,5 @@
 <?php
-require_once "vendor/autoload.php";
+require_once __DIR__."/../vendor/autoload.php";
 require_once 'HTTP/Request2.php';
 
 header('Content-Type: application/json');
@@ -32,12 +32,6 @@ if($key = getenv('EMOTION_API_KEY')){
   $url->setQueryVariables($parameters);
 
   $request->setMethod(HTTP_Request2::METHOD_POST);
-
-  // ######### To Fix the SSL issue ###########
-  $request->setConfig(array(
-    'ssl_verify_peer'   => FALSE,
-    'ssl_verify_host'   => FALSE
-  ));
   $content = file_get_contents($filename);
 
   $request->setBody($content);
