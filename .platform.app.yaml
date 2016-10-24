@@ -32,4 +32,4 @@ dependencies:
     platformsh/cli: "3.6.0"
 mounts:
   .platformsh/cache: 'shared:files/cache'
-  .platformsh/session: 'shared:files/session'
+  .platformsh/.session: 'shared:files/session'
