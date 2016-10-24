@@ -31,4 +31,5 @@ dependencies:
   php:
     platformsh/cli: "3.6.0"
 mounts:
-  .platformsh/cache: 'shared:files/files'
+  .platformsh/cache: 'shared:files/cache'
+  .platformsh/session: 'shared:files/session'
