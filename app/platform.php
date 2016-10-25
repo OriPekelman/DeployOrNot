@@ -25,6 +25,14 @@ while (ob_get_level() > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeployOrNot?</title>
     <style>
+      body, .console {  font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace; 
+      background-color: #222;
+      color: green;
+      padding:80px;
+      height: auto;
+      overflow: auto;
+      border:none;}
+
     pre.console {  font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace; 
       background-color: #222;
       color: green;
