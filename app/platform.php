@@ -25,14 +25,6 @@ while (ob_get_level() > 0) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeployOrNot?</title>
     <style>
-    .console { 
-      font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace; 
-      background-color: #222;
-      color: green;
-      padding:80px;
-      height: auto;
-      overflow: auto;
-    }
     pre.console {  font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace; 
       background-color: #222;
       color: green;
@@ -45,9 +37,12 @@ while (ob_get_level() > 0) {
 <body>
 <pre class="console">
 <?php
-  if ($project_id = getenv('PLATFORM_DEPLOY_PROJECT')){ 
-    $environment_to_merge = $_GET["environment"];
-    $command = "platform environment:merge -y -p ". $project_id . " ".escapeshellarg($environment_to_merge) ;
+
+$environment = preg_replace("/[^A-Za-z0-9 ]/", '', $_GET["environment"]);
+$project = preg_replace("/[^A-Za-z0-9 ]/", '', $_GET["project"]);
+
+  if ($environment && $project){
+    $command = "platform environment:merge -y -p ". $project . " ".$environment ;
     $process = new Process($command);
     $process->run(function ($type, $buffer) {
         if (Process::ERR === $type) {
@@ -59,7 +54,7 @@ while (ob_get_level() > 0) {
     
   } else
   {
-    echo "Vous devez configurer un projet à déployer";
+    echo "Vous devez spécifier un projet et un environnment à déployer";
   }
 ?>
 </pre>

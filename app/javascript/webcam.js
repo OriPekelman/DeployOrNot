@@ -98,9 +98,7 @@
                             else {
                                 result.innerHTML = response.message;
                                 $("#console").show();
-                                var env = window.location.hash.substring(1);
-                                console.log("environment: " + env);
-                                $("#console").html("<iframe style='width:100%;height:auto;min-height:400px;overflow:auto;border: none;' src='/platform.php?environment="+env+"'><iframe>");  
+                                $("#console").html("<iframe style='width:100%;height:auto;min-height:400px;overflow:auto;border: none;' src='/platform.php?project=" + project + "&environment=" + environment + "'><iframe>");  
                                 //TODO: display the computed result instead
                                 //$('#photo2').attr('src', 'Photos/' + response.result);
                             }
