@@ -25,7 +25,7 @@ web:
     "/":
       root: "app"
       index:
-        - index.html
+        - index.php
       allow: true
 dependencies:
   php:
