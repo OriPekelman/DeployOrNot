@@ -18,32 +18,22 @@ while (ob_get_level() > 0) {
     if (ob_get_level() == $level) break;
   }
 ?>
-<!DOCTYPE html>
-<html xmlns:fb="http://ogp.me/ns/fb" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DeployOrNot?</title>
-    <style>
-      body, .console {  font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace; 
-      background-color: #222;
-      color: green;
-      padding:80px;
-      height: auto;
-      overflow: auto;
-      border:none;}
-
-    pre.console {  font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace; 
-      background-color: #222;
-      color: green;
-      padding:80px;
-      height: auto;
-      overflow: auto;
-      border:none;}
-    </style>
-</head>
-<body>
-<pre class="console">
+<style>
+  body, .console {  font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace; 
+  background-color: #222;
+  color: green;
+  padding:80px;
+  height: auto;
+  overflow: auto;
+  border:none;}
+pre.console {  font-family: Lucida Console,Lucida Sans Typewriter,monaco,Bitstream Vera Sans Mono,monospace; 
+  background-color: #222;
+  color: green;
+  padding:80px;
+  height: auto;
+  overflow: auto;
+  border:none;}
+</style>
 <?php
 
 $environment = preg_replace("/[^A-Za-z0-9 ]/", '', $_GET["environment"]);
@@ -65,5 +55,3 @@ $project = preg_replace("/[^A-Za-z0-9 ]/", '', $_GET["project"]);
     echo "Vous devez spécifier un projet et un environnment à déployer";
   }
 ?>
-</pre>
-</body>
